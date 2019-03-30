@@ -4,7 +4,12 @@
   "description": "Face recognition api for klecksx members",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gather": "node gather.js",
+    "categorize": "node categorize.js",
+    "negatives": "ls -1 ./training/negative > ./training/negative.txt && sed -i -e 's/^/training\/negative\//' training/negative.txt",
+    "annotate": "opencv_annotation --annotations=positive.txt --images=training/positive",
+    "positives": "opencv_createsamples -info positive.txt -w 360 -h 202 -vec pos.vec -num 11"
   },
   "author": "Vincent Jeltsch",
   "license": "ISC",
